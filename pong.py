@@ -29,12 +29,12 @@ paddle_b.goto(350, 0)
 # Ball
 ball = turtle.Turtle()
 ball.speed(0) # assigns maximus possible speed
-ball.shape("square")
+ball.shape("circle")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 2
-ball.dy = -2
+ball.dx = 1
+ball.dy = -1
 
 # Game Functions
 def paddle_a_up():
@@ -73,10 +73,18 @@ while True:
     ball.sety(ball.ycor() + ball.dy)
 
     # Defining borders
-    if(ball.ycor() > 290):
+    if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
 
-    if(ball.ycor() < -290):
-        ball.sety(290)
+    if ball.ycor() < -290:
+        ball.sety(-290)
         ball.dy *= -1
+
+    if ball.xcor() > 390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+  
+    if ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
